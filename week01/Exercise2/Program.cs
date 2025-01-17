@@ -32,7 +32,7 @@ class Program
         // Output grade
         Console.WriteLine($"Your grade is: {letter}");
 
-        // Check if the user passed
+        // Check if the user passed the course
         if (gradePercentage >= 70)
         {
             Console.WriteLine("Congratulations! You passed the course.");
