@@ -1,3 +1,6 @@
+// Creativity added:
+// I added a ChecklistGoal class where you can set a target number of completions for a goal, and once that target is met, the user receives bonus points. 
+// This provides a dynamic and engaging way to track goals that require repeated actions, adding a fun layer of achievement through the bonus system.
 using System;
 
 class Program
