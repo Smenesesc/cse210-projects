@@ -1,21 +1,27 @@
-using System;
-
 public class Cycling : Activity
 {
-    private double _speed; // Speed in miles per hour
+    private double _speed;  // Speed in miles per hour
 
-    public Cycling(DateTime date, int durationMinutes, double speed) : base(date, durationMinutes)
+    public Cycling(string date, int durationMinutes, double speed) : base(date, durationMinutes)
     {
-        _speed = speed; // Set the speed for this cycling activity
+        _speed = speed;
     }
 
-    // Overriding methods for cycling-specific calculations
-    public override double GetDistance() => _speed * base._durationMinutes / 60; // Distance = speed * time / 60
-    public override double GetSpeed() => _speed; // Just return the speed directly
-    public override double GetPace() => 60 / _speed; // Pace = 60 / speed
+    // Override GetDistance for cycling
+    public override double GetDistance()
+    {
+        return (_speed * _durationMinutes) / 60;  // Distance = speed * time / 60
+    }
 
-    // Customizing the units for cycling
-    protected override string GetDistanceUnit() => "miles";
-    protected override string GetSpeedUnit() => "mph";
-    protected override string GetPaceUnit() => "min per mile";
+    // Override GetSpeed for cycling
+    public override double GetSpeed()
+    {
+        return _speed;  // Return the speed directly for cycling
+    }
+
+    // Override GetPace for cycling
+    public override double GetPace()
+    {
+        return 60 / _speed;  // Pace = 60 / speed
+    }
 }

@@ -1,31 +1,22 @@
-using System;
-
 public abstract class Activity
 {
-    private DateTime _date;
-    private int _durationMinutes;
+    protected string _date;  // Date of the activity
+    protected int _durationMinutes;  // Duration in minutes
 
-    // Constructor that sets the date and duration for all activities
-    public Activity(DateTime date, int durationMinutes)
+    public Activity(string date, int durationMinutes)
     {
         _date = date;
         _durationMinutes = durationMinutes;
     }
 
-    // Abstract methods that subclasses must implement to define how to get the distance, speed, and pace.
+    // Abstract methods to be implemented by derived classes
     public abstract double GetDistance();
     public abstract double GetSpeed();
     public abstract double GetPace();
 
-    // A method that returns a nice summary for the activity, calling the above methods for calculations
+    // Method to return the summary for the activity
     public string GetSummary()
     {
-        return $"{_date:dd MMM yyyy} {this.GetType().Name} ({_durationMinutes} min) - Distance: {GetDistance()} {GetDistanceUnit()}, Speed: {GetSpeed()} {GetSpeedUnit()}, Pace: {GetPace()} {GetPaceUnit()}";
+        return $"{_date} {GetType().Name} ({_durationMinutes} min) - Distance {GetDistance()}, Speed {GetSpeed()} mph, Pace: {GetPace()} min per mile";
     }
-
-    // Default units for distance, speed, and pace that can be overridden by subclasses
-    protected virtual string GetDistanceUnit() => "miles";
-    protected virtual string GetSpeedUnit() => "mph";
-    protected virtual string GetPaceUnit() => "min per mile";
 }
-

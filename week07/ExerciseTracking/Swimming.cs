@@ -1,21 +1,27 @@
-using System;
-
 public class Swimming : Activity
 {
-    private int _laps; // Number of laps swum
+    private int _laps;  // Number of laps
 
-    public Swimming(DateTime date, int durationMinutes, int laps) : base(date, durationMinutes)
+    public Swimming(string date, int durationMinutes, int laps) : base(date, durationMinutes)
     {
-        _laps = laps; // Set the number of laps for this swimming activity
+        _laps = laps;
     }
 
-    // Overriding methods for swimming-specific calculations
-    public override double GetDistance() => _laps * 50 / 1000.0 * 0.62; // Convert laps to miles
-    public override double GetSpeed() => (GetDistance() / base._durationMinutes) * 60; // Speed = distance / time * 60
-    public override double GetPace() => base._durationMinutes / GetDistance(); // Pace = time / distance
+    // Override GetDistance for swimming
+    public override double GetDistance()
+    {
+        return (_laps * 50) / 1000.0 * 0.62;  // Convert laps to miles (50m per lap)
+    }
 
-    // Customizing the units for swimming
-    protected override string GetDistanceUnit() => "miles";
-    protected override string GetSpeedUnit() => "mph";
-    protected override string GetPaceUnit() => "min per mile";
+    // Override GetSpeed for swimming
+    public override double GetSpeed()
+    {
+        return (GetDistance() / _durationMinutes) * 60;  // Speed = distance / time * 60
+    }
+
+    // Override GetPace for swimming
+    public override double GetPace()
+    {
+        return _durationMinutes / GetDistance();  // Pace = time / distance
+    }
 }
